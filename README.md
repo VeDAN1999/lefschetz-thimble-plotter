@@ -4,7 +4,7 @@ Flow-based Mathematica visualiser for Lefschetz thimbles and dual thimbles in 1D
 
 
 
-!\[Example thimble geometry](images/thimbles\_example.png)
+!\[Example thimble geometry](images/thimbles_example.png)
 
 
 
