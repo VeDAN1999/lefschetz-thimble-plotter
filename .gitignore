@@ -1,0 +1,13 @@
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Mathematica / Wolfram temporary files
+*.mx
+*.m~
+*.nb~
+*.bak
+*.tmp
+.autosave
+.history
