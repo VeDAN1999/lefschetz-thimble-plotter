@@ -14,11 +14,9 @@ Flow-based Mathematica visualiser for Lefschetz thimbles and dual thimbles in 1D
 2. Set `p`, `deltaParam`, and `box` near the top of the file.
 3. Evaluate the script.
 
-<<<<<<< HEAD
-\## Maths notes
 
-See \[`docs/maths.md`](docs/maths.md) for the flow equations and thimble/dual definitions.
-
+See [`docs/maths.md`](docs/maths.md) for the flow equations and thimble/dual definitions.
+See [`docs/GitHUBThimbles.pdf`](docs/GitHUBThimbles.pdf) for the PDF-style notes.
 =======
 ## Notes
 - Assumes non-degenerate saddles (W''(zσ) ≠ 0).
