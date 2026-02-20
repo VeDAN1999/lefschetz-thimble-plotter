@@ -5,27 +5,34 @@ Flow-based Mathematica visualiser for Lefschetz thimbles and dual thimbles in 1D
 ![Example thimble geometry](./images/thimbles_example.png)
 
 ## What this does
-- Finds saddle points by solving W'(z)=0.
+
+- Finds saddle points by solving \(W'(z)=0\).
 - Traces thimbles and dual thimbles via holomorphic gradient flow.
-- Optional speed-normalised flow prevents runaway for high-degree potentials (e.g. z^9, z^11).
+- Optional speed-normalised flow prevents runaway for high-degree potentials (e.g. \(z^9\), \(z^{11}\)).
 
 ## Quick start
+
 1. Open `src/thimble_plotter.wl` in Mathematica.
 2. Set `p`, `deltaParam`, and `box` near the top of the file.
 3. Evaluate the script.
 
-
+## Maths notes
 See [`docs/maths.md`](docs/maths.md) for the flow equations and thimble/dual definitions.
-See [`docs/GitHUBThimbles.pdf`](docs/GitHUBThimbles.pdf) for the PDF-style notes.
-=======
-## Notes
+
+PDF-style notes: [`docs/GitHUBThimbles.pdf`](docs/GitHUBThimbles.pdf)
+
+## Notes / troubleshooting
 - Assumes non-degenerate saddles (W''(zσ) ≠ 0).
-- If arms “disappear”, enlarge `box` and/or keep `useNormalisedFlow = True`.
->>>>>>> f99eedb191e09544bad5fd903bb699a9ad6edb19
+- If arms “disappear”, enlarge `box` and/or set `useNormalisedFlow = True`.
+- For higher-degree polynomials, use the normalised flow to avoid numerical blow-up.
+
+## Repository layout
+
+- `src/` — Wolfram/Mathematica source
+- `docs/` — mathematical notes + PDF
+- `images/` — screenshots for README
 
 ## Licence
-MIT.
 
-
-
+MIT (see `LICENSE`).
 
