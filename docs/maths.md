@@ -1,220 +1,98 @@
-\# Maths notes: Lefschetz thimbles in 1 complex dimension
-
-
+# Maths notes: Lefschetz thimbles in 1 complex dimension
 
 This repo visualises Lefschetz thimbles and their duals for integrals of the form
+\[
+I=\int_{\Gamma}\exp\!\big(-\kappa W(z)\big)\,\mathrm{d}z,
+\]
+where \(W(z)\) is holomorphic and \(\kappa\) is a (typically large) complex parameter.
 
-
-
-&nbsp;   I = ∫\_Γ exp(-κ W(z)) dz,
-
-
-
-where `W(z)` is holomorphic (complex analytic) and `κ` is a (typically large) complex parameter. The key point is that the \*geometry\* of the steepest-descent contours is controlled by the saddles of `W` and by the phase of `κ`.
-
-
+The key point is that the geometry of the steepest-descent contours is controlled by the saddles of \(W\) and by the phase of \(\kappa\).
 
 ---
 
+## 1. Saddles (critical points)
 
-
-\## 1. Saddles (critical points)
-
-
-
-A saddle is any `zσ` solving
-
-
-
-&nbsp;   W'(zσ) = 0.
-
-
-
-We assume non-degeneracy:
-
-
-
-&nbsp;   W''(zσ) ≠ 0.
-
-
-
-These are the points around which steepest-descent/ascent manifolds are attached.
-
-
+A saddle is any \(z_\sigma\) solving \(W'(z_\sigma)=0\). We assume non-degeneracy: \(W''(z_\sigma)\neq 0\).
 
 ---
 
+## 2. Holomorphic gradient flow
 
+Write \(z(u)=x(u)+iy(u)\). Define the (upward/downward) holomorphic gradient flow
+\[
+\frac{\mathrm{d}z}{\mathrm{d}u}=\pm \overline{\kappa W'(z)}.
+\]
+In this repo we take \(\kappa=1\) by default, so
+\[
+\frac{\mathrm{d}z}{\mathrm{d}u}=\pm \overline{W'(z)}.
+\]
 
-\## 2. Holomorphic gradient flow
-
-
-
-Write `z(u) = x(u) + i y(u)` and define the (upward/downward) holomorphic gradient flow
-
-
-
-&nbsp;   dz/du = ± conjugate( κ W'(z) ).
-
-
-
-In this repo we take `κ = 1` by default, so the flow becomes
-
-
-
-&nbsp;   dz/du = ± conjugate( W'(z) ).
-
-
-
-This is exactly what the Mathematica code integrates (in x,y form).
-
-
-
-\*\*Important:\*\* multiplying the RHS by any positive real function `g(z)>0` does not change the curves, only the parametrisation in `u`. That is why the “speed-normalised” flow used for high-degree potentials preserves the geometry.
-
-
+Reparametrisations: multiplying the RHS by any positive real function \(g(z)>0\) does not change the curves, only the parametrisation in \(u\). That is why the “speed-normalised” flow preserves geometry.
 
 ---
 
+## 3. Constant-phase property
 
-
-\## 3. Constant-phase property (Im(κ W) is constant)
-
-
-
-Along the flow we have
-
-
-
-&nbsp;   d/du \[ κ W(z(u)) ] = κ W'(z) dz/du
-
-&nbsp;                     = ± κ W'(z) conjugate( κ W'(z) )
-
-&nbsp;                     = ± |κ W'(z)|^2  (a real number).
-
-
+Along the flow,
+\[
+\frac{\mathrm{d}}{\mathrm{d}u}\big[\kappa W(z(u))\big]
+= \kappa W'(z)\frac{\mathrm{d}z}{\mathrm{d}u}
+= \pm \kappa W'(z)\overline{\kappa W'(z)}
+= \pm |\kappa W'(z)|^2\in\mathbb{R}.
+\]
 
 So:
-
-
-
-\- `Im( κ W(z(u)) )` is constant along each flow line,
-
-\- `Re( κ W(z(u)) )` is strictly monotone (increasing for `+`, decreasing for `-`).
-
-
-
-This is the steepest-descent / stationary-phase condition in one line.
-
-
+- \(\mathrm{Im}(\kappa W)\) is constant along each flow line,
+- \(\mathrm{Re}(\kappa W)\) is strictly monotone (increasing for \(+\), decreasing for \(-\)).
 
 ---
 
+## 4. Thimbles and dual thimbles
 
+- The thimble \(J_\sigma\) attached to \(z_\sigma\) is the set of points that flow into the saddle under the downward flow (equivalently: points that originate at the saddle under the upward flow).
+- The dual thimble \(K_\sigma\) is defined by the opposite flow direction.
 
-\## 4. Thimbles and dual thimbles
-
-
-
-\- The \*\*thimble\*\* `Jσ` attached to `zσ` is the set of points that flow \*into\* the saddle under the \*\*downward\*\* flow (equivalently: points that originate at the saddle under the upward flow).
-
-\- The \*\*dual thimble\*\* `Kσ` is defined by the opposite flow direction.
-
-
-
-In practice (for plotting) we start near the saddle and integrate outward, because starting exactly at `zσ` would not move.
-
-
+For plotting, we start near the saddle and integrate outward, since starting exactly at \(z_\sigma\) does not move.
 
 ---
 
-
-
-\## 5. Why two “arms” (±ε v)
-
-
+## 5. Why two arms (±ε v)
 
 Near a non-degenerate saddle,
-
-
-
-&nbsp;   W(z) ≈ W(zσ) + (1/2) W''(zσ) (z - zσ)^2.
-
-
-
-The constant-phase condition `Im(W)=const` gives two opposite directions through the saddle (a 1D manifold has two local branches). Numerically, we take
-
-
-
-&nbsp;   z0± = zσ ± ε v,
-
-
-
-and integrate both to draw the full curve.
-
-
+\[
+W(z)\approx W(z_\sigma)+\tfrac12 W''(z_\sigma)(z-z_\sigma)^2.
+\]
+The constant-phase condition gives two opposite directions through the saddle. Numerically we take
+\[
+z_0^\pm=z_\sigma\pm \varepsilon v
+\]
+and integrate both arms.
 
 ---
 
+## 6. Local direction choice v
 
-
-\## 6. Local direction choice v
-
-
-
-Write `λ = κ W''(zσ)` and choose `v` so that `λ v^2` is real. One convenient choice is
-
-
-
-&nbsp;   v = exp( - i Arg(λ) / 2 ).
-
-
-
-This is exactly what the script implements (with an extra phase shift for the dual).
-
-
+Let \(\lambda=\kappa W''(z_\sigma)\) and choose \(v\) so that \(\lambda v^2\in\mathbb{R}\). One convenient choice is
+\[
+v=\exp\!\big(-\tfrac{i}{2}\mathrm{Arg}(\lambda)\big).
+\]
+This is what the script implements (with an extra phase shift for the dual).
 
 ---
 
+## 7. Why speed-normalising helps
 
-
-\## 7. Why speed-normalising helps for high powers
-
-
-
-For high-degree polynomials, `|W'(z)|` can grow like `|z|^p`, so the raw flow can reach very large `|z|` in a short `u` interval (sometimes effectively “blowing up” for plotting purposes).
-
-
-
-The normalised flow used in the code is
-
-
-
-&nbsp;   dz/du = ± conjugate(W'(z)) / (1 + |conjugate(W'(z))|),
-
-
-
-which bounds the speed while keeping the same geometric curves (it is just a reparametrisation of `u`).
-
-
+For high-degree polynomials, \(|W'(z)|\) grows fast and the raw flow can “blow up” in finite plotting time. The normalised flow used in the code is
+\[
+\frac{\mathrm{d}z}{\mathrm{d}u}=\pm \frac{\overline{W'(z)}}{1+|\overline{W'(z)}|},
+\]
+which bounds the speed while keeping the same geometric curves.
 
 ---
 
+## 8. Mapping to the code
 
-
-\## 8. Mapping to the code
-
-
-
-\- `Saddles\[δ]` solves `W'(z)=0`.
-
-\- `ManifoldArms\[zS,δ,...]` builds the two initial points `z0± = zS ± ε v`.
-
-\- The ODE system is the real/imag parts of `dz/du = ± conjugate(W'(z))` (optionally normalised).
-
-\- `ThimbleArms` and `DualArms` are thin wrappers that fix the sign / phase shift.
-
-
-
-
-
+- `Saddles[δ]` solves `W'(z)=0`.
+- `ManifoldArms[zS,δ,...]` builds the two initial points `z0± = zS ± ε v`.
+- The ODE system is the real/imag parts of `dz/du = ± conjugate(W'(z))` (optionally normalised).
+- `ThimbleArms` and `DualArms` fix the sign / phase shift.
