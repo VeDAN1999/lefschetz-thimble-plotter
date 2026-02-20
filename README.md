@@ -16,13 +16,13 @@ Flow-based Mathematica visualiser for Lefschetz thimbles and dual thimbles in 1D
 2. Set `p`, `deltaParam`, and `box` near the top of the file.
 3. Evaluate the script.
 
-See:
-- `docs/maths.md` for the flow equations and thimble/dual definitions.
-- `docs/GitHUBThimbles.pdf` for PDF-style notes.
+## Maths notes
+See [`docs/maths.md`](docs/maths.md) for the flow equations and thimble/dual definitions.
+
+PDF-style notes: [`docs/GitHUBThimbles.pdf`](docs/GitHUBThimbles.pdf)
 
 ## Notes / troubleshooting
-
-- Assumes non-degenerate saddles (\(W''(z_\sigma)\neq 0\)).
+- Assumes non-degenerate saddles (W''(zσ) ≠ 0).
 - If arms “disappear”, enlarge `box` and/or set `useNormalisedFlow = True`.
 - For higher-degree polynomials, use the normalised flow to avoid numerical blow-up.
 
